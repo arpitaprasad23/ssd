@@ -1,0 +1,38 @@
+EXP 8 - SONARQUBE STATIC ANALYSIS
+
+EASIEST LAB SETUP: Docker Desktop.
+Download/install Docker Desktop, reboot if requested, start it.
+
+START SONARQUBE COMMUNITY BUILD:
+  docker run -d --name sonarqube -p 9000:9000 sonarqube:community
+
+Wait 1-3 minutes. Open:
+  http://localhost:9000
+Default first login commonly: admin / admin, then change password if prompted.
+
+Create a local project in SonarQube. Follow the displayed 'Analyze your project' instructions because the generated token/command depends on your project and scanner method.
+
+If Sonar asks for SonarScanner CLI, download the scanner from SonarSource docs, extract it, add its bin folder to PATH, then reopen terminal.
+
+Typical project file sonar-project.properties:
+sonar.projectKey=ssd-demo
+sonar.sources=.
+sonar.exclusions=.venv/**
+
+Then run the exact scanner command SonarQube gives you.
+
+REPORT TERMS:
+Bug = reliability problem.
+Vulnerability = security problem.
+Code smell = maintainability issue.
+Security hotspot = security-sensitive code requiring review.
+Duplications = repeated code.
+
+WHAT TO SHOW: Dashboard, issues list, severity/type, screenshot/export if faculty asks.
+
+STOP LATER:
+  docker stop sonarqube
+START AGAIN:
+  docker start sonarqube
+
+RESULT: Source code was statically analyzed and issues reviewed in SonarQube.

@@ -1,0 +1,24 @@
+SSD PRACTICAL + VIVA SURVIVAL KIT
+
+Use these only in your own local lab/demo apps.
+Recommended base setup: Windows laptop + VS Code + Python 3 + browser.
+
+Tonight's order (fastest): 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10.
+Experiment 11 in your pasted list appears to be only CO6, with no title.
+
+Common installs:
+1. Python: https://www.python.org/downloads/ (tick Add Python to PATH)
+2. VS Code: https://code.visualstudio.com/
+3. Git: https://git-scm.com/downloads
+4. Docker Desktop (for SonarQube): https://www.docker.com/products/docker-desktop/
+5. Burp Suite Community: https://portswigger.net/burp/communitydownload
+
+Create a folder SSD_LAB. Open terminal there.
+Python virtual environment (optional):
+  py -m venv .venv
+  .venv\Scripts\activate
+
+For Flask experiments:
+  pip install flask
+
+NEVER test SQL injection/Burp payloads against websites you do not own/have permission to test. Use only the local demo app in these notes.

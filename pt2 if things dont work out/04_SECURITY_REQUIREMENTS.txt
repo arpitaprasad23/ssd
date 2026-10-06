@@ -1,0 +1,31 @@
+EXP 4 - SECURE WEB APP REQUIREMENTS
+
+AIM: Design a secure web application using functional and non-functional security requirements.
+
+Example system: Secure Student Portal.
+
+FUNCTIONAL SECURITY REQUIREMENTS (what system must DO):
+FR1 User registration/login.
+FR2 Passwords stored using strong password hashing, never plaintext.
+FR3 Role-based access: student/admin.
+FR4 Server-side input validation.
+FR5 Logout invalidates session.
+FR6 Sensitive actions logged.
+FR7 Account recovery verifies identity.
+
+NON-FUNCTIONAL SECURITY REQUIREMENTS (quality/constraint):
+NFR1 HTTPS/TLS for data in transit.
+NFR2 Least privilege.
+NFR3 Secure response headers.
+NFR4 Availability and backup requirements.
+NFR5 Logs protected from unauthorized modification.
+NFR6 Dependencies regularly patched/scanned.
+NFR7 Security testing before release.
+
+DESIGN TO DRAW:
+Browser --HTTPS--> Web App --parameterized queries--> DB
+                     |
+                     +--> Audit Log
+Authentication + authorization shown at web app.
+
+RESULT: Functional and non-functional security requirements were documented and secure architecture designed.

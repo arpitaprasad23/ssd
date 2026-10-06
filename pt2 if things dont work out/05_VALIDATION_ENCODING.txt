@@ -1,0 +1,45 @@
+EXP 5 - VULNERABLE FORMS, VALIDATION & ENCODING
+
+INSTALL:
+  pip install flask
+
+Create app.py:
+
+from flask import Flask, request, render_template_string
+import re
+app = Flask(__name__)
+
+FORM = """
+<h2>Secure Form</h2>
+<form method="post">
+Name: <input name="name">
+Email: <input name="email">
+<button>Submit</button>
+</form>
+{% if msg %}<p>Hello {{ msg }}</p>{% endif %}
+"""
+
+@app.route('/', methods=['GET','POST'])
+def index():
+    msg = ''
+    if request.method == 'POST':
+        name = request.form.get('name','').strip()
+        email = request.form.get('email','').strip()
+        if not re.fullmatch(r"[A-Za-z ]{1,40}", name):
+            return 'Invalid name', 400
+        if not re.fullmatch(r"[^@\s]+@[^@\s]+\.[^@\s]+", email):
+            return 'Invalid email', 400
+        msg = name   # Jinja auto-escapes output by default
+    return render_template_string(FORM, msg=msg)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+RUN:
+  python app.py
+Open http://127.0.0.1:5000
+Try valid name/email. Then try <script>alert(1)</script> as name: validation rejects it.
+
+KEY IDEA: Validation checks whether input is acceptable. Encoding escapes special output characters for its output context. Do BOTH where appropriate.
+
+RESULT: Input was validated server-side and output safely encoded.

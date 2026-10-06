@@ -1,0 +1,26 @@
+EXP 1 - STUDY OWASP TOP 10
+
+AIM: Study major web application security risk categories.
+
+No software is strictly required. Open the official OWASP Top 10 page and make a table with category, meaning, example, mitigation.
+
+Current commonly taught OWASP Top 10 (2021):
+A01 Broken Access Control - user can access something they should not.
+A02 Cryptographic Failures - sensitive data poorly protected.
+A03 Injection - untrusted input becomes a command/query.
+A04 Insecure Design - security missing from design itself.
+A05 Security Misconfiguration - unsafe/default configuration.
+A06 Vulnerable and Outdated Components - risky dependencies.
+A07 Identification and Authentication Failures - weak login/session controls.
+A08 Software and Data Integrity Failures - untrusted updates/pipeline/data.
+A09 Security Logging and Monitoring Failures - attacks not logged/detected.
+A10 SSRF - server is tricked into making unintended requests.
+
+WHAT TO SHOW: Table + 1 example and mitigation per category.
+RESULT: Studied OWASP Top 10 and identified suitable controls.
+
+VIVA:
+Q What is OWASP? Open Worldwide Application Security Project.
+Q Is Top 10 a list of exact bugs? No, broad risk categories.
+Q Injection example? SQL injection.
+Q Broken access control example? Changing an ID and seeing another user's record.

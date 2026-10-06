@@ -1,0 +1,44 @@
+EXP 10 - CI/CD PIPELINE WITH SECURITY TOOLS
+
+Simple GitHub Actions example using Python + Bandit (SAST).
+Prerequisites: Git + GitHub account + a small Python project.
+
+In project terminal:
+  pip install bandit
+  bandit -r . -x ./.venv
+
+Create folders: .github/workflows
+Create .github/workflows/security.yml:
+
+name: Security CI
+on: [push, pull_request]
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install security tool
+        run: pip install bandit
+      - name: Run Bandit SAST
+        run: bandit -r .
+
+Push project to YOUR GitHub repository:
+  git init
+  git add .
+  git commit -m "SSD security pipeline"
+  git branch -M main
+  git remote add origin YOUR_REPOSITORY_URL
+  git push -u origin main
+
+Open GitHub repository -> Actions -> Security CI -> inspect job output.
+
+CI = automatically build/test/check changes frequently.
+CD = Continuous Delivery/Deployment: prepares or releases changes after CI.
+Security in CI/CD = DevSecOps / shift-left security: automated checks earlier in development.
+SAST example = Bandit/SonarQube. DAST example = authorized dynamic scanner against a test deployment. Dependency scanning checks vulnerable packages.
+
+RESULT: A CI pipeline was configured to run an automated security check on code changes.

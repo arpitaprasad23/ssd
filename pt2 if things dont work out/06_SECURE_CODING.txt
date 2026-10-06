@@ -1,0 +1,40 @@
+EXP 6 - SECURE CODING: SQL INJECTION + BUFFER SAFETY
+
+PART A - SQL INJECTION MITIGATION (local SQLite demo)
+Create sql_safe.py:
+
+import sqlite3
+con = sqlite3.connect('demo.db')
+cur = con.cursor()
+cur.execute('CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY, username TEXT)')
+cur.execute('DELETE FROM users')
+cur.executemany('INSERT INTO users(username) VALUES (?)', [('ari',),('admin',)])
+con.commit()
+name = input('Username: ')
+cur.execute('SELECT id, username FROM users WHERE username = ?', (name,))
+print(cur.fetchall())
+con.close()
+
+RUN: python sql_safe.py
+Why secure? User input is DATA, not concatenated into SQL syntax.
+
+PART B - BUFFER OVERFLOW CONCEPT + SAFE CODING
+Unsafe C functions such as gets()/unbounded copying can write beyond a buffer. For a safe lab demonstration, show bounded input rather than weaponizing an overflow.
+
+Create safe_buffer.c:
+#include <stdio.h>
+int main(void){
+    char name[16];
+    printf("Name: ");
+    if (fgets(name, sizeof name, stdin))
+        printf("Hello %s", name);
+    return 0;
+}
+
+Compile if GCC is installed:
+  gcc safe_buffer.c -o safe_buffer
+  ./safe_buffer
+
+MITIGATIONS: bounds checking, safe APIs, compiler protections, ASLR/DEP, stack canaries, memory-safe languages.
+
+RESULT: Parameterized SQL and bounded input were used to mitigate common coding vulnerabilities.

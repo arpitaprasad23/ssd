@@ -1,0 +1,39 @@
+EXP 7 - SECURE ERROR HANDLING & LOGGING
+
+AIM: Avoid leaking internal errors to users while recording useful server-side logs.
+
+Create secure_logging.py:
+
+import logging
+logging.basicConfig(filename='app.log', level=logging.INFO,
+    format='%(asctime)s %(levelname)s %(message)s')
+
+def divide(a,b):
+    try:
+        result = a / b
+        logging.info('Division completed')
+        return result
+    except ZeroDivisionError:
+        logging.warning('Invalid division attempt: zero denominator')
+        return 'Invalid input'
+    except Exception:
+        logging.exception('Unexpected application error')
+        return 'Something went wrong'
+
+print(divide(10,0))
+
+RUN:
+  python secure_logging.py
+  type app.log       (Windows CMD)
+  Get-Content app.log (PowerShell)
+
+SECURE RULES:
+- Do not expose stack traces/internal paths to normal users.
+- Log security-relevant events.
+- Do not log passwords, tokens, card data, secrets.
+- Use useful timestamps/severity.
+- Protect logs from unauthorized modification/access.
+
+CERT = secure coding guidance from CERT/SEI. MISRA = coding guidelines widely used for safety/security-critical C/C++.
+
+RESULT: Errors were handled safely and diagnostic events logged without exposing sensitive internals.

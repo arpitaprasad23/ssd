@@ -1,0 +1,21 @@
+SSD VIVA - RAPID REVISION
+
+OWASP: community/project producing application-security guidance.
+Vulnerability: weakness. Threat: potential cause of harm. Risk: likelihood/impact associated with a threat exploiting a vulnerability.
+STRIDE: Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege.
+DREAD: Damage, Reproducibility, Exploitability, Affected Users, Discoverability.
+Authentication = who are you? Authorization = what are you allowed to do?
+Validation = check input against rules. Encoding = represent output safely for its context. Sanitization = remove/transform unsafe content where appropriate.
+SQL injection mitigation = parameterized/prepared queries + least-privilege DB account + validation as defense-in-depth.
+XSS mitigation = contextual output encoding, safe templating, CSP as defense-in-depth.
+Buffer overflow = writing beyond allocated buffer. Mitigate with bounds checks, safe APIs/languages and platform/compiler defenses.
+Logging != error display. User gets generic safe error; server log gets useful diagnostic/security event without secrets.
+SAST = analyze source/build artifacts without exercising running app. DAST = test running app from outside.
+SonarQube = static code quality/security analysis platform.
+Burp = intercepting web proxy/testing toolkit.
+CI/CD = automated integration, testing and delivery/deployment pipeline.
+DevSecOps = integrate security throughout development/operations.
+Least privilege = give only minimum permissions needed.
+Defense in depth = multiple independent security controls.
+Hashing = one-way transformation, commonly password storage with a password hashing algorithm. Encryption = reversible with key, protects confidentiality.
+HTTPS = HTTP over TLS; protects data in transit (confidentiality/integrity and server authentication when certificates are valid).

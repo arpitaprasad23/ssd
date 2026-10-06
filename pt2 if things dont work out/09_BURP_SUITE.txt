@@ -1,0 +1,29 @@
+EXP 9 - BURP SUITE DYNAMIC WEB TRAFFIC ANALYSIS
+
+SAFETY: Use ONLY your local lab app / intentionally authorized target.
+
+INSTALL Burp Suite Community from PortSwigger. Open Burp.
+
+FASTEST METHOD:
+1. Burp -> Proxy -> Intercept.
+2. Click Open browser (Burp's built-in browser).
+3. Start your local Flask app from Exp 5: python app.py
+4. In Burp browser open http://127.0.0.1:5000
+5. Turn Intercept ON.
+6. Submit the form.
+7. Burp captures the HTTP request. Inspect method, path, headers and body.
+8. Click Forward to let request continue.
+9. Proxy -> HTTP history shows requests/responses.
+10. Right-click your LOCAL request -> Send to Repeater.
+11. Repeater: change a harmless form value, click Send, compare response.
+
+WHAT TO IDENTIFY:
+GET vs POST, Host, User-Agent, Content-Type, Cookie (if any), parameters, status code, response headers/body.
+
+VIVA:
+Proxy = sits between browser and server to inspect traffic.
+Repeater = manually resend/modify individual requests.
+Intruder = automated request variations (Community is limited; only use authorized labs).
+Scanner = automated vulnerability scanning is a Burp Professional feature, not Community's full capability.
+
+RESULT: Authorized local HTTP traffic was intercepted, inspected and replayed for dynamic analysis.

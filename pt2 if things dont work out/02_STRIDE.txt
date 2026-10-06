@@ -1,0 +1,28 @@
+EXP 2 - STRIDE THREAT MODEL
+
+AIM: Identify threats using STRIDE.
+
+Draw a simple DFD:
+[User] -> [Login Web App] -> [Database]
+                 |
+             [Auth Service]
+
+STRIDE:
+S Spoofing = pretending to be another identity -> MFA/authentication.
+T Tampering = unauthorized modification -> integrity checks, validation.
+R Repudiation = denying an action -> audit logs/timestamps.
+I Information Disclosure = exposing secret data -> encryption/access control.
+D Denial of Service = making service unavailable -> rate limits/resources.
+E Elevation of Privilege = gaining higher permissions -> least privilege/RBAC.
+
+Apply to diagram:
+User/Login: spoofing, repudiation.
+Traffic: tampering, information disclosure.
+Web app: DoS, elevation of privilege.
+Database: tampering, information disclosure.
+
+HOW TO DRAW: diagrams.net -> New Diagram -> Blank -> add rectangles/arrows -> label data flow -> export PNG/PDF. Or draw by hand if allowed.
+
+RESULT: Threats were identified using STRIDE and controls proposed.
+
+VIVA: STRIDE is a threat identification model. It does NOT calculate risk score.
